@@ -7,6 +7,7 @@ export default defineConfig({
     tailwindcss(),
     react(),
   ],
+  base: process.env.BASE_URL ?? '/',
   build: {
     chunkSizeWarningLimit: 1000,
   },
