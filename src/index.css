@@ -1,0 +1,221 @@
+@import "tailwindcss";
+@import "@xyflow/react/dist/style.css";
+
+@theme {
+  --color-background: #080C14;
+  --color-surface: #0E1420;
+  --color-surface-2: #141B2A;
+  --color-surface-3: #1C2640;
+  --color-border: #1E2D4A;
+  --color-border-light: #263554;
+
+  --color-primary: #6366F1;
+  --color-primary-light: #818CF8;
+  --color-primary-dark: #4F46E5;
+
+  --color-pros: #10B981;
+  --color-cons: #F43F5E;
+  --color-risk: #F59E0B;
+  --color-cost: #0EA5E9;
+  --color-deps: #14B8A6;
+  --color-confidence: #A78BFA;
+
+  --color-text: #E2E8F0;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #4A5D7A;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
+
+  --shadow-glow-primary: 0 0 20px rgba(99, 102, 241, 0.3);
+  --shadow-glow-success: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    background: #080C14;
+    color: #E2E8F0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.3);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.6);
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: currentColor;
+    cursor: pointer;
+    border: 2px solid #080C14;
+    box-shadow: 0 0 6px currentColor;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(14, 20, 32, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glass-card {
+    background: rgba(20, 27, 42, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .canvas-grid {
+    background-image: radial-gradient(circle, rgba(99, 102, 241, 0.12) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #6366F1, #A78BFA, #EC4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 24px rgba(99, 102, 241, 0.35);
+  }
+}
+
+/* ═══════════════════════════════════════
+   React Flow Overrides — Custom Styling
+   ═══════════════════════════════════════ */
+.react-flow {
+  background: transparent !important;
+}
+
+.react-flow__pane {
+  cursor: grab !important;
+}
+
+.react-flow__pane.dragging,
+.react-flow__pane:active {
+  cursor: grabbing !important;
+}
+
+.react-flow__node {
+  cursor: default !important;
+}
+
+.react-flow__node.dragging {
+  cursor: grabbing !important;
+}
+
+.react-flow__edge-path {
+  stroke: #6366F1;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.4));
+}
+
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: #A78BFA;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 8px rgba(167, 139, 250, 0.6));
+}
+
+.react-flow__handle {
+  width: 10px !important;
+  height: 10px !important;
+  background: #6366F1 !important;
+  border: 2px solid #080C14 !important;
+  border-radius: 50% !important;
+  transition: all 0.15s ease;
+}
+
+.react-flow__handle:hover,
+.react-flow__handle.connectionindicator {
+  background: #A78BFA !important;
+  transform: scale(1.5);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.9);
+}
+
+.react-flow__controls {
+  display: none;
+}
+
+.react-flow__attribution {
+  display: none;
+}
+
+.react-flow__minimap {
+  background: rgba(8, 12, 20, 0.95) !important;
+  border: 1px solid rgba(30, 45, 74, 0.8) !important;
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+
+.react-flow__minimap-mask {
+  fill: rgba(99, 102, 241, 0.08);
+}
+
+.react-flow__minimap-node {
+  fill: #1C2640;
+}
+
+.react-flow__connection-path {
+  stroke: #6366F1 !important;
+  stroke-width: 2 !important;
+  stroke-dasharray: 6, 3;
+  animation: connection-dash 0.5s linear infinite;
+}
+
+.react-flow__selection {
+  background: rgba(99, 102, 241, 0.06) !important;
+  border: 1px solid rgba(99, 102, 241, 0.35) !important;
+  border-radius: 4px !important;
+}
+
+.react-flow__nodesselectionrect {
+  border: 1px solid rgba(99, 102, 241, 0.5) !important;
+  background: rgba(99, 102, 241, 0.06) !important;
+}
+
+@keyframes connection-dash {
+  to { stroke-dashoffset: -18; }
+}
+
+@keyframes flow-dash {
+  to { stroke-dashoffset: -24; }
+}
